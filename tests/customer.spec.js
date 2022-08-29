@@ -4,7 +4,7 @@ const {
   customerRoute,
   customersRoute,
   customersSearchRouteEmail,
-} = require("../src/mocks/mockPlaywright");
+} = require("../src/test_mocks/mockPlaywright");
 
 test.beforeEach(async ({ page }) => {
   await customerRoute(page);
