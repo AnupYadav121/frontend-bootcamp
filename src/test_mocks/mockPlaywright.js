@@ -1,4 +1,4 @@
-import { customer1, customers } from "../views/customers/tests/TestObject";
+import { customer1, customers } from "./TestObject";
 
 var isSaved = false;
 

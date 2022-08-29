@@ -26,6 +26,8 @@ jobs:
         run: npm i --force
       - name: test project test files
         run: npm run test
+      - name: start npm server
+        run: npm start
       - name: test playwright test file
         run: npx playwright test
       - name: Build Project
