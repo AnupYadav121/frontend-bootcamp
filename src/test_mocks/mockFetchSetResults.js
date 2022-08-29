@@ -1,9 +1,6 @@
 import "@testing-library/jest-dom";
 import { rest } from "msw";
-import {
-  customer1,
-  allCustomers,
-} from "../views/customers/__tests__/TestObject";
+import { customer1, allCustomers } from "./TestObject.js";
 
 const getCustomersResponse = rest.get(
   "http://localhost:8080/Home/customers",

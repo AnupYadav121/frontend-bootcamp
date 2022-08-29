@@ -1,4 +1,4 @@
-import { handlers } from "../../../mocks/mockFetchSetResults";
+import { handlers } from "../../../test_mocks/mockFetchSetResults";
 import { screen, render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { setupServer } from "msw/node";
@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "../../../store/store";
 import ViewCustomers from "../ViewCustomers";
 import anchors from "../../../anchors/Anchors";
-import { customer1, allCustomers } from "./TestObject";
+import { customer1, allCustomers } from "../../../test_mocks/TestObject";
 
 const server = new setupServer(...handlers);
 

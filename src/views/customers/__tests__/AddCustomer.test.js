@@ -1,4 +1,4 @@
-import { handlers } from "../../../mocks/mockFetchSetResults";
+import { handlers } from "../../../test_mocks/mockFetchSetResults";
 import { screen, render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { setupServer } from "msw/node";
