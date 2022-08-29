@@ -1,0 +1,51 @@
+.item-add-button {
+    margin-right: 2%;
+    margin-top: 3%;
+}
+
+.add-item {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+
+
+
+.add-item>div {
+    padding: 10px;
+}
+
+
+.item {
+    width: 100%;
+    background-color: #FAFAFF;
+    height: 100%;
+    padding: 3%;
+}
+
+
+.item-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-header>.button,
+.item-add-button>.button {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.add-item {
+    width: 50%;
+    background-color: white;
+    padding: 10%;
+}
+
+.item-add-button>.button {
+    width: 120px;
+}

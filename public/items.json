@@ -1,0 +1,4 @@
+[
+    {"id":"1","name":"laptop","price":"23","description":"this is for use on monday","createdOn":"08/08/2022"},
+    {"id":"2","name":"cycle","price":34,"description":"this is for use on tuesday","createdOn":"09/08/2022"}
+]

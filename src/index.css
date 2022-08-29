@@ -1,0 +1,377 @@
+.error {
+    color: red;
+}
+
+.main-header {
+    height: 10%;
+    padding: 2%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 5px;
+    background-color: blue;
+    text-align: center;
+    color: white;
+    font-size: xx-large;
+}
+
+.main-app {
+    margin: 0;
+    padding: 0;
+}
+
+.router {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+.main-body {
+    height: 85%;
+    width: 100%;
+}
+
+@media (max-width:800px) {}
+
+.main-footer {
+    width: 100%;
+    height: 5%;
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background-color: blue;
+    color: white;
+    font-size: x-large;
+}
+
+
+.navbar {
+    width: 15%;
+    height: 100%;
+}
+
+.app-routes {
+    width: 85%;
+    height: 100%;
+    overflow: scroll;
+    background-color: #FAFAFF;
+}
+
+.nav-customer,
+.nav-item,
+.nav-invoice,
+.nav-home {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items: center;
+}
+
+
+.nav-customer>p,
+.nav-item>p,
+.nav-invoice>p,
+.nav-home>p {
+    padding: 5%;
+    margin: 0px;
+    margin-left: 10%;
+}
+
+.nav-customer>a,
+.nav-item>a,
+.nav-invoice>a,
+.nav-home>a {
+    padding: 5%;
+    margin-left: 10%;
+}
+
+
+body,
+html,
+#root,
+.main-app {
+    height: 100%;
+    width: 100%;
+}
+
+
+.home {
+    text-align: center;
+}
+
+
+.searchBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchButton {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    margin: 1%;
+}
+
+.searchInput,
+.searchOptions {
+    margin: 1%;
+}
+
+.pagination-navbar {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+.invoice-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.show-invoice-customer {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+.show-invoice-customer button {
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+    margin-left: 1%;
+    width: 40%;
+    height: 50%;
+}
+
+
+.add-invoice-customer {
+    display: grid;
+    column-gap: 5%;
+    row-gap: 15%;
+}
+
+.add-invoice-customer>div>button {
+    width: 100%;
+}
+
+.add-customer-1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.add-customer-2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.add-invoice-view-part1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.invoice-details {
+    display: grid;
+}
+
+.invoiceInput1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.invoiceInput2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.invoice-input {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 6%;
+}
+
+.add-invoice-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 3%;
+}
+
+.add-invoice-item>* {
+    margin: 1%;
+}
+
+.invoice-item-form {
+    display: grid;
+    margin: 1%;
+    text-align: center;
+}
+
+.add-item-1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.add-item-2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.invoice-view-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.calculation-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.invoice-amount {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.invoice-item-table {
+    width: 100%;
+}
+
+.invoice-item-table-header {
+    width: 100%;
+}
+
+.invoice-header>button {
+    height: 80%;
+}
+
+.invoice-header {
+    align-items: center;
+}
+
+
+.invoice-item-view {
+    margin: 3% 30%;
+}
+
+.invoice-item-form>div {
+    margin: 1%;
+}
+
+.add-item-3,
+.add-item-2,
+.add-item-1,
+.add-item-4 {
+    text-align: left;
+}
+
+.add-item-3,
+.add-item-4 {
+    margin-top: 2%;
+}
+
+.add-item-4>* {
+    margin-right: 7%;
+}
+
+.add-item-3>label {
+    margin-right: 15px;
+}
+
+.calculation-item>p {
+    padding-right: 5%;
+}
+
+.invoice-amount>p {
+    padding-right: 10%;
+    font-size: large;
+}
+
+.invoice-calculation {
+    background-color: white;
+    padding: 2%;
+    width: 30%;
+}
+
+.add-invoice-item>button {
+    background-color: blue;
+    border-radius: 80px;
+    color: white;
+}
+
+.add-item-4 button {
+    background-color: blue;
+    border-radius: 80px;
+    color: white;
+}
+
+.invoice-item-table {
+    background-color: white;
+}
+
+.save-invoice-button {
+    text-align: right;
+}
+
+.save-invoice-button>button {
+    margin-right: 1%;
+    margin-bottom: 1%;
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+}
+
+.invoice-header>button {
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+}
+
+
+.button {
+    padding: 10px;
+}
+
+.customer-div {
+    background-color: #FAFAFF;
+    border-left: 5px solid red;
+}
+
+.item-div {
+    background-color: #FAFAFF;
+    border-left: 5px solid red;
+}
+
+.invoice-div {
+    background-color: #FAFAFF;
+    border-left: 5px solid red;
+}
+
+.home-div {
+    background-color: #FAFAFF;
+    border-left: 5px solid red;
+}
