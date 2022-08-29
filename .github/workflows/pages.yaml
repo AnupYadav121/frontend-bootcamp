@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 16.x
       - name: Install NPM Dependencies
-        run: npm i
+        run: npm i --force
       - name: test project test files
         run: npm run test
       - name: test playwright test file
