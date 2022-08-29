@@ -12,6 +12,8 @@ jobs:
   build:
     # Name of the job
     name: Build
+    # time out time
+    timeout-minutes: 60
     # The OS to run the job on
     runs-on: ubuntu-latest
     # Steps
@@ -26,10 +28,16 @@ jobs:
         run: npm i --force
       - name: test project test files
         run: npm run test
-      - name: start npm server
-        run: npm start
-      - name: test playwright test file
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
         run: npx playwright test
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
       - name: Build Project
         run: npm run build
       - name: Upload artifact in order to deploy
