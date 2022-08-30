@@ -25,11 +25,11 @@ jobs:
       - name: Install NPM Dependencies
         run: npm i --force
       - name: test project test files
-        run: npm ci
+        run: npm run test
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: run server
-        run: npm start
+        run: npm ci
       - name: Run Playwright tests
         run: npx playwright test
       - uses: actions/upload-artifact@v2
