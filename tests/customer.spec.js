@@ -16,7 +16,7 @@ test("test is written for add customer view page and customers list page", async
   page,
 }) => {
   //open the home page
-  await page.goto("https://www.npmjs.com/");
+  await page.goto("http://localhost:3000/");
 
   //check title of the page
   await expect(page).toHaveTitle(/React App/);

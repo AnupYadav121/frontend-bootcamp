@@ -59,5 +59,6 @@
     "test": "tests"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://anupyadav121.github.io/frontend-bootcamp/"
 }
