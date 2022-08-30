@@ -25,7 +25,7 @@ jobs:
       - name: Install NPM Dependencies
         run: npm i --force
       - name: test project test files
-        run: npm run test
+        run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: run server
