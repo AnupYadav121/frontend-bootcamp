@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/AnupYadav121/frontend-bootcamp/branch/master/graph/badge.svg?token=VOTGHCZIDX)](https://codecov.io/gh/AnupYadav121/frontend-bootcamp)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
