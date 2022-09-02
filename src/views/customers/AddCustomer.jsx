@@ -4,9 +4,19 @@ import Button from "../../components/util/Button";
 import Input from "../../components/util/Input";
 import { v4 as uuid4 } from "uuid";
 import { inputs } from "../../anchors/Inputs";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { setIsCustomerSet } from "../../actions/actions";
 
 function AddCustomer(props) {
   const [errors, setErrors] = useState({});
+  const dispatch = useDispatch();
+  let myUseNavigate = useNavigate();
+
+  function formInitiatedDone() {
+    dispatch(setIsCustomerSet(true));
+  }
 
   const [customer, setCustomer] = useState({
     name: "",
@@ -40,9 +50,30 @@ function AddCustomer(props) {
   function addCustomer(event) {
     event.preventDefault();
     if (Object.keys(errors).length === 0) {
-      if (props.addCustomer !== undefined) {
-        props.addCustomer(customer);
+      const baseCustomerURL = "http://localhost:8080/Home/customer";
+
+      async function saveCustomerDB() {
+        const dummyCustomer = {};
+        dummyCustomer.name = customer["name"];
+        dummyCustomer.email = customer["email"];
+        dummyCustomer.phone = customer["phone"];
+        try {
+          const responseCustomer = await axios.post(
+            baseCustomerURL,
+            JSON.stringify(dummyCustomer)
+          );
+          if (responseCustomer.status === 200) {
+            dispatch(addCustomer(customer));
+          }
+        } catch (e) {
+          alert(
+            `customer could not be added due to invalid details provided with error ${e}`
+          );
+        }
       }
+      saveCustomerDB();
+      formInitiatedDone();
+      myUseNavigate(-1);
     }
   }
 

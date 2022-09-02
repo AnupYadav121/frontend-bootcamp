@@ -3,4 +3,5 @@ export const initialState = {
   items: [],
   invoices: [],
   invoiceItems: [],
+  isCustomerSet: true,
 };

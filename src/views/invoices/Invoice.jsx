@@ -2,17 +2,17 @@ import React from "react";
 import "./invoice.css";
 import Heading from "../../components/util/Heading";
 import Button from "../../components/util/Button";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import ViewInvoices from "./ViewInvoices";
 import AddInvoice from "./AddInvoice";
 import axios from "axios";
-import {useSelector,useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setMyInvoices } from "../../actions/actions";
 
 function Invoice() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(true);
-  const invoices  = useSelector(state=>state.invoices)
+  const invoices = useSelector((state) => state.invoices);
   const dispatch = useDispatch();
-
 
   const headingContent = isFormSubmitted ? "Invoice" : "New Invoice";
 
@@ -36,10 +36,7 @@ function Invoice() {
               invoiceFetched["updated_at"] * 1000
             ).toLocaleDateString());
           });
-          dispatch({
-            type: "SET_INVOICES",
-            payload: invoicesFetched,
-          });
+          dispatch(setMyInvoices(invoicesFetched));
         }
       } catch (e) {
         alert(`invoices could not be fetched due to DB error ${e}`);
@@ -69,7 +66,7 @@ function Invoice() {
         ) : isFormSubmitted ? (
           <ViewInvoices />
         ) : (
-          <AddInvoice saveFormToggle={formToggle}/>
+          <AddInvoice saveFormToggle={formToggle} />
         )}
       </div>
     </div>

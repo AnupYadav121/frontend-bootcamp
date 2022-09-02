@@ -8,6 +8,8 @@ import Customer from "./views/customers/Customer";
 import Item from "./views/items/Item";
 import Invoice from "./views/invoices/Invoice";
 import Navbar from "./components/app/Navbar";
+import ViewCustomers from "./views/customers/ViewCustomers";
+import AddCustomer from "./views/customers/AddCustomer";
 
 function App() {
   return (
@@ -23,10 +25,15 @@ function App() {
             </div>
             <div className="app-routes">
               <Routes>
-                <Route exact path="/" element={<Home />} />
-                <Route path="customer" element={<Customer />} />
-                <Route path="item" element={<Item />} />
-                <Route path="invoice" element={<Invoice />} />
+                <Route path="/">
+                  <Route index element={<Home />} />
+                  <Route path="customers" element={<Customer />}>
+                    <Route index element={<ViewCustomers />} />
+                    <Route path="add" element={<AddCustomer />} />
+                  </Route>
+                  <Route path="items" element={<Item />} />
+                  <Route path="invoices" element={<Invoice />} />
+                </Route>
               </Routes>
             </div>
             <div className="navbar-target">

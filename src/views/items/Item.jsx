@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import ViewItems from "./ViewItems";
 import Heading from "../../components/util/Heading";
 import AddItem from "./AddItem";
@@ -7,12 +7,12 @@ import "./item.css";
 import axios from "axios";
 import SearchBox from "../../components/util/SearchBox";
 import anchors from "../../anchors/Anchors";
-import {useSelector,useDispatch} from "react-redux"
-
+import { useSelector, useDispatch } from "react-redux";
+import { addMyItem, setMyItems } from "../../actions/actions";
 
 function Item() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(true);
-  const items  = useSelector(state=>state.items)
+  const items = useSelector((state) => state.items);
   const dispatch = useDispatch();
   const itemAnchor = anchors["itemAnchor"];
 
@@ -31,10 +31,7 @@ function Item() {
           JSON.stringify(dummyItem)
         );
         if (responseItem.status === 200) {
-          dispatch({
-            type: "ADD_ITEM",
-            payload: item,
-          });
+          dispatch(addMyItem(item));
         }
       } catch (e) {
         alert(
@@ -64,10 +61,7 @@ function Item() {
                 itemFetched["created_at"] * 1000
               ).toLocaleDateString());
             });
-            dispatch({
-              type: "SET_ITEMS",
-              payload: itemsFetched,
-            });
+            dispatch(setMyItems(itemsFetched));
           }
         } catch (e) {
           alert(`items could not be fetched due to DB error ${e}`);
@@ -90,16 +84,10 @@ function Item() {
               itemFetched["createdAt"] * 1000
             ).toLocaleDateString());
           });
-          dispatch({
-            type: "SET_ITEMS",
-            payload: itemsFetched,
-          });
+          dispatch(setMyItems(itemsFetched));
         }
         if (response.data === null) {
-          dispatch({
-            type: "SET_ITEMS",
-            payload: [],
-          });
+          dispatch(setMyItems([]));
         }
       } catch (e) {
         alert(

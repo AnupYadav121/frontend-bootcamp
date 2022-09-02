@@ -9,14 +9,21 @@ import TextArea from "../../components/util/TextArea";
 import InvoiceInput from "../../components/Invoice/InvoiceInput";
 import axios from "axios";
 import Button from "../../components/util/Button";
-import {useSelector,useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setCustomers,
+  addMyInvoiceItem,
+  setMyInvoiceItems,
+  addMyInvoice,
+} from "../../actions/actions";
+import { setMyItems } from "../../actions/actions";
 
 function AddInvoice(props) {
   const [isCustomerSet, setIsCustomerSet] = useState(true);
   const [isItemSet, setIsItemSet] = useState(true);
   const tmpInvoiceId = Math.ceil(Math.random() * 10000000000000);
   const [notes, setNotes] = useState("");
-  const invoiceItems  = useSelector(state=>state.invoiceItems)
+  const invoiceItems = useSelector((state) => state.invoiceItems);
   const dispatch = useDispatch();
   const [invoiceCustomer, setInvoiceCustomer] = useState({
     id: "",
@@ -136,10 +143,7 @@ function AddInvoice(props) {
               itemFetched["created_at"] * 1000
             ).toLocaleDateString());
           });
-          dispatch({
-            type: "SET_ITEMS",
-            payload: itemsFetched,
-          });
+          dispatch(setMyItems(itemsFetched));
         }
       } catch (e) {
         alert(`items could not be fetched due to DB error ${e}`);
@@ -160,10 +164,7 @@ function AddInvoice(props) {
               customerFetched["createdAt"] * 1000
             ).toLocaleDateString());
           });
-          dispatch({
-            type: "SET_CUSTOMERS",
-            payload: customersFetched,
-          });
+          dispatch(setCustomers(customersFetched));
         }
       } catch (e) {
         alert(`customers could not be fetched due to backend error ${e}`);
@@ -184,10 +185,7 @@ function AddInvoice(props) {
   const handleItemSubmit = (quantity, item) => {
     item.quantity = quantity;
     setInvoiceItem(item);
-    dispatch({
-      type: "ADD_INVOICE_ITEM",
-      payload: item,
-    });
+    dispatch(addMyInvoiceItem(item));
   };
 
   const handleChangeNotes = (e) => {
@@ -203,17 +201,15 @@ function AddInvoice(props) {
     const filteredItems = invoiceItems.filter((item, index) => {
       return index !== id;
     });
-    dispatch({
-      type: "SET_INVOICE_ITEMS",
-      payload: filteredItems,
-    });
+    dispatch(setMyInvoiceItems(filteredItems));
   };
 
   const handleSaveInvoice = () => {
     const invoiceBody = {};
     invoiceBody.id = tmpInvoiceId;
-    invoiceBody.due_date = new Date(invoiceDetails.dueDate).getTime()/1000;
-    invoiceBody.issued_date = new Date(invoiceDetails.issuedAt).getTime()/1000;
+    invoiceBody.due_date = new Date(invoiceDetails.dueDate).getTime() / 1000;
+    invoiceBody.issued_date =
+      new Date(invoiceDetails.issuedAt).getTime() / 1000;
     invoiceBody.ref_no = invoiceDetails.refNumber;
     invoiceBody.customer_id = invoiceCustomer.id;
     invoiceBody.bill_address = `${invoiceCustomer.name} \n ${invoiceCustomer.email} \n ${invoiceCustomer.phone}`;
@@ -233,41 +229,36 @@ function AddInvoice(props) {
     invoiceBody.invoice_items = tmpInvoiceItems;
 
     const baseInvoicePostURL = "http://localhost:8080/Home/invoice";
-    var baseInvoiceGetURL = "http://localhost:8080/Home/invoice/"
+    var baseInvoiceGetURL = "http://localhost:8080/Home/invoice/";
     async function saveInvoiceDB() {
-      var fetchError  = "";
+      var fetchError = "";
       try {
         const responseInvoice = await axios.post(
           baseInvoicePostURL,
           JSON.stringify(invoiceBody)
         );
-        baseInvoiceGetURL+= tmpInvoiceId;
+        baseInvoiceGetURL += tmpInvoiceId;
         const getSavedInvoice = await axios.get(baseInvoiceGetURL);
-        const invoiceData = getSavedInvoice.data["Invoice fetched Successfully:"];
-        invoiceData.created_at=new Date(invoiceData.updated_at*1000).toLocaleDateString();
+        const invoiceData =
+          getSavedInvoice.data["Invoice fetched Successfully:"];
+        invoiceData.created_at = new Date(
+          invoiceData.updated_at * 1000
+        ).toLocaleDateString();
         if (responseInvoice.status === 200) {
-          dispatch({
-            type: "ADD_INVOICE",
-            payload: invoiceData,
-          });
-        }else{
-          if(responseInvoice.data["error"]!==null){
-            fetchError= responseInvoice.data["error"]
+          dispatch(addMyInvoice(invoiceData));
+        } else {
+          if (responseInvoice.data["error"] !== null) {
+            fetchError = responseInvoice.data["error"];
           }
         }
       } catch (e) {
-        if(fetchError.length>0){
-          alert(`invoice could not be added due to error ${fetchError}`)
+        if (fetchError.length > 0) {
+          alert(`invoice could not be added due to error ${fetchError}`);
         }
-        alert(
-          `invoice could not be added due to error ${e}`
-        );
+        alert(`invoice could not be added due to error ${e}`);
       }
     }
-    dispatch({
-      type:"SET_INVOICE_ITEMS",
-      payload:[]
-    })
+    dispatch(setMyInvoiceItems([]));
     saveInvoiceDB();
     props.saveFormToggle();
   };

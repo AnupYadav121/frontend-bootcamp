@@ -1,11 +1,11 @@
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import PaginationTable from "../../components/util/PaginatedTable";
 import axios from "axios";
-import {useSelector,useDispatch} from "react-redux"
-
+import { useSelector, useDispatch } from "react-redux";
+import { setMyItems } from "../../actions/actions";
 
 function ViewItems() {
-  const items  = useSelector(state=>state.items)
+  const items = useSelector((state) => state.items);
   const dispatch = useDispatch();
 
   const baseItemURL = "http://localhost:8080/Home/items";
@@ -25,10 +25,7 @@ function ViewItems() {
           } else {
             itemsFetched = [];
           }
-          dispatch({
-            type: "SET_ITEMS",
-            payload: itemsFetched,
-          });
+          dispatch(setMyItems(itemsFetched));
         }
       } catch (e) {
         alert(`items could not be fetched due to DB error ${e}`);

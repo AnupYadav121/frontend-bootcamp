@@ -11,6 +11,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "hooks": "^0.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
@@ -60,6 +61,5 @@
   },
   "author": "",
   "license": "ISC",
-  
   "homepage": "https://anupyadav121.github.io/frontend-bootcamp/"
 }

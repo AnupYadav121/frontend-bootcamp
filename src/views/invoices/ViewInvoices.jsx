@@ -4,16 +4,16 @@ import SearchBox from "../../components/util/SearchBox";
 import { useState } from "react";
 import { useEffect } from "react";
 import anchors from "../../anchors/Anchors";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 function ViewInvoices() {
   const invoiceAnchor = anchors["invoiceAnchor"];
-  const invoices  = useSelector(state=>state.invoices)
+  const invoices = useSelector((state) => state.invoices);
   const [filteredInvoices, setFilteredInvoices] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setFilteredInvoices(invoices);
-  },[invoices])
+  }, [invoices]);
 
   const handleInvoicesView = (name, key) => {
     var tmpFilteredInvoices = [];

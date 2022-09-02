@@ -6,6 +6,7 @@ const Pagination = ({
   paginate,
   paginatePrevious,
   paginateNext,
+  currentPage,
 }) => {
   const pageNumbers = [];
 

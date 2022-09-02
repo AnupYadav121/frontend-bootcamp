@@ -42,6 +42,11 @@ const AppReducer = (state = initialState, action) => {
         ...state,
         invoices: [...state.invoices, action.payload],
       };
+    case "SET_CUSTOMER_FORM":
+      return {
+        ...state,
+        isCustomerSet: action.payload,
+      };
     default:
       return state;
   }
